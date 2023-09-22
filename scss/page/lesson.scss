@@ -1,0 +1,9 @@
+@import "../base/sizing.scss";
+@import "../base/bootstrap.scss";
+.opt-card-container {
+  width: 560px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

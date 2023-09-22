@@ -1,0 +1,27 @@
+.sz-opt-card {
+  width: 33%;
+  padding: 20px;
+}
+
+.sz-opt-btn {
+  width: 128px;
+  height: 64px;
+  display: block;
+}
+
+.text-opt-link {
+  width: 128px;
+  margin: auto;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: black;
+  padding: 10px 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  &:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+  }
+}
