@@ -1,6 +1,8 @@
+import "@/scss/page/index.scss";
+
 export function Component() {
   return (
-    <div>
+    <div className="sz-main">
       <h1>Online Typing Practice for Programmers</h1>
       <div>
         <img src={"/screenshot.png"} width={560} />

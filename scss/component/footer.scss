@@ -1,0 +1,26 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../base/shadow.scss";
+
+.bg-footer {
+  background-color: rgba($color: #fafafa, $alpha: 1);
+}
+
+.sz-footer {
+  height: 48px;
+  padding-top: 10px;
+}
+
+.text-footer {
+  text-align: center;
+  font-size: small;
+}
+
+.link-footer {
+  text-decoration: none;
+  color: rgb(54, 118, 255);
+  transition: all;
+  transition-duration: 100ms;
+  &:hover {
+    color: rgb(103, 151, 255);
+  }
+}
