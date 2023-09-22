@@ -14,7 +14,7 @@ export const Medal = () => {
   return (
     <div className="medal-container">
       <p className="label">獲得獎牌</p>
-      <p>尚未完成</p>
+      <p className="correct-text">尚未完成</p>
     </div>
   );
 };
