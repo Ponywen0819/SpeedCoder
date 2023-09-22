@@ -1,0 +1,63 @@
+@import "../base/bootstrap.scss";
+
+@mixin container {
+  border-radius: 10px;
+  border: 2px solid #aeaeae;
+  color: #aeaeae;
+  text-align: center;
+  padding: 5px;
+}
+
+.label {
+  color: #aeaeae;
+  font-size: small;
+  text-align: start;
+  margin: 0;
+}
+
+.timer-container {
+  @include container;
+  width: 128px;
+  font-size: xx-large;
+}
+
+.reset-icon-color {
+  color: #aeaeae;
+}
+
+.reset-btn-color {
+  border: 2px solid #aeaeae;
+}
+
+.language-container {
+  @include container;
+}
+
+.language-label {
+  font-size: small;
+  text-align: start;
+  margin: 0;
+}
+
+.language-select {
+  border: 0;
+  width: 100%;
+  font-size: x-large;
+  color: #aeaeae;
+}
+
+.language-option {
+  font-size: small;
+}
+
+.correct-container {
+  @include container;
+}
+
+.correct-text {
+  font-size: x-large;
+}
+
+.medal-container {
+  @include container;
+}

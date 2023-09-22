@@ -1,0 +1,84 @@
+@import "../base/bootstrap.scss";
+
+$key-sz: 48px;
+
+.sz-keyboard {
+  width: calc($key-sz * 15);
+  margin: auto;
+  padding: 0;
+  gap: 0;
+  box-sizing: content-box;
+  border-right: 2px solid #e0e0e0;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+@mixin key-basic {
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 3px;
+  box-sizing: border-box;
+  background-color: rgba($color: #fafafa, $alpha: 1);
+  border-top: 2px solid #e0e0e0;
+  border-left: 2px solid #e0e0e0;
+
+  &:active {
+    border: 2px solid #aaaaaa;
+  }
+  &:focus {
+    border: 2px solid #555555;
+  }
+}
+
+.text-key {
+  margin: 0;
+  font-size: smaller;
+}
+
+.key-nm {
+  @include key-basic;
+  width: $key-sz;
+  height: $key-sz;
+}
+
+.key-oq {
+  @include key-basic;
+  width: calc($key-sz * 1.25);
+  height: $key-sz;
+}
+
+.key-oh {
+  @include key-basic;
+  width: calc($key-sz * 1.5);
+  height: $key-sz;
+}
+
+.key-otq {
+  @include key-basic;
+  width: calc($key-sz * 1.75);
+  height: $key-sz;
+}
+
+.key-db {
+  @include key-basic;
+  width: calc($key-sz * 2);
+  height: $key-sz;
+}
+
+.key-tq {
+  @include key-basic;
+  width: calc($key-sz * 2.25);
+  height: $key-sz;
+}
+
+.key-ttq {
+  @include key-basic;
+  width: calc($key-sz * 2.75);
+  height: $key-sz;
+}
+
+.key-space {
+  @include key-basic;
+  width: calc($key-sz * 6.25);
+  height: $key-sz;
+}

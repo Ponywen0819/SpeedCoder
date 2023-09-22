@@ -1,0 +1,41 @@
+@import "../base/bootstrap.scss";
+
+@mixin container {
+  border-radius: 10px;
+  border: 2px solid #aeaeae;
+  color: #aeaeae;
+  text-align: center;
+  padding: 5px;
+}
+
+.setting-container {
+  @include container;
+}
+
+.setting-heading {
+  color: #aeaeae;
+  text-align: end;
+  font-size: 1.5rem;
+}
+
+.setting_label {
+  color: #aeaeae;
+  text-align: end;
+}
+
+.setting-layout-select {
+  width: 100%;
+  border: 0;
+  color: #aeaeae;
+  font-size: x-large;
+}
+.setting-layout-option {
+  border: 0;
+  color: #aeaeae;
+  font-size: small;
+}
+
+.setting-btn {
+  color: #aeaeae;
+  width: 100%;
+}
