@@ -1,0 +1,20 @@
+@import "../base/sizing.scss";
+@import "../base/bootstrap.scss";
+@import "../base/position.scss";
+@import "../base/sizing.scss";
+
+.sz-error-icon {
+  font-size: 50px;
+  display: block;
+  margin: auto;
+}
+
+.sz-error-page {
+  min-height: 100vh;
+  height: 960px;
+  position: relative;
+}
+
+.sz-error-content {
+  width: fit-content;
+}
