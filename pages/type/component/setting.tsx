@@ -1,4 +1,6 @@
 import { Button } from "antd";
+import { useType } from "./context";
+
 import "@/scss/component/setting.scss";
 
 const KeyboardLayout = () => {
@@ -13,12 +15,18 @@ const KeyboardLayout = () => {
 };
 
 const KeyboardEnable = () => {
+  const type_context = useType();
+
+  const handleSetting = () => {
+    type_context?.setKeyboard(!type_context.enable_keyboard);
+  };
+
   return (
     <div className="setting-container">
       <p className="setting_label">顯示鍵盤</p>
-      {/* <button>關閉鍵盤</button> */}
-      <Button type="text" className="setting-btn">
-        關閉鍵盤
+
+      <Button type="text" className="setting-btn" onClick={handleSetting}>
+        {type_context?.enable_keyboard ? "關閉鍵盤" : "開啟鍵盤"}
       </Button>
     </div>
   );

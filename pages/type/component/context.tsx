@@ -1,13 +1,13 @@
 import { createContext, useContext, useState } from "react";
-import type { ReactElement, Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction, ReactNode } from "react";
 
-interface TypeContext {
+export interface TypeContext {
   enable_keyboard: boolean;
   setKeyboard: Dispatch<SetStateAction<boolean>>;
 }
 
 interface TypeProviderProp {
-  children: ReactElement;
+  children: ReactNode;
 }
 
 const type_context = createContext<TypeContext | null>(null);
@@ -24,6 +24,6 @@ export const TypeProvider = ({ children }: TypeProviderProp) => {
   );
 };
 
-export const useType = () => {
+export const useType = (): TypeContext | null => {
   return useContext(type_context);
 };

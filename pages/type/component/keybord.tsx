@@ -1,4 +1,5 @@
 import { QWER } from "./keyboard_layout";
+import { useType } from "./context";
 import "@/scss/component/keyboard.scss";
 
 interface KeyProp {
@@ -100,9 +101,7 @@ const Layout = () => {
 };
 
 export const Keyboard = () => {
-  return (
-    <div>
-      <Layout />
-    </div>
-  );
+  const type_context = useType();
+
+  return <div>{type_context?.enable_keyboard && <Layout />}</div>;
 };
