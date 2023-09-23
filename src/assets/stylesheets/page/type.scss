@@ -1,5 +1,3 @@
-@import "../base/sizing.scss";
-
 .sz-aside {
   width: 192px;
   // flex-grow: 1;
@@ -11,4 +9,55 @@
 
 .sz-main {
   width: 730px;
+}
+
+.type-main {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  position: relative;
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
+}
+
+.setting-btn {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+.score-sub-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 1200px) {
+    flex-direction: row;
+  }
+}
+
+.info-container {
+  width: 180px;
+  border-radius: 10px;
+  border: 2px solid #aeaeae;
+  color: #aeaeae;
+  text-align: center;
+  padding: 5px;
+}
+
+.collapsed-container {
+  overflow: hidden;
+  transition: all;
+  transition-duration: 500ms;
+  right: 0;
+}
+
+.timer-container {
+  font-size: xx-large;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }

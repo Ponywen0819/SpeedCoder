@@ -13,7 +13,7 @@ export const Language = () => {
   };
 
   return (
-    <div className="language-container">
+    <div className="info-container ">
       <p className="label">當前語言</p>
       <select className="language-select" onChange={onChange} value={language}>
         <option className="language-option" value={"c"}>

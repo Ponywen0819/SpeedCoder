@@ -12,7 +12,7 @@ const BrownMedal = () => {
 
 export const Medal = () => {
   return (
-    <div className="medal-container">
+    <div className="info-container ">
       <p className="label">獲得獎牌</p>
       <p className="correct-text">尚未完成</p>
     </div>

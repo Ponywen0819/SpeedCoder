@@ -4,3 +4,14 @@
 @import "./stylesheets/base/sizing.scss";
 
 @import "./stylesheets/component/footer.scss";
+@import "./stylesheets/component/keyboard.scss";
+@import "./stylesheets//component/setting.scss";
+@import "./stylesheets/component/hands.scss";
+
+@import "./stylesheets/component/score.scss";
+
+@import "./stylesheets/page/type.scss";
+
+body {
+  min-width: 1000px;
+}

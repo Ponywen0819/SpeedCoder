@@ -6,11 +6,8 @@ import { Medal } from "./medal";
 
 export const Score = () => {
   return (
-    <div className="d-flex flex-column gap-3">
-      <div className="d-flex align-items-center gap-3">
-        <Timer />
-        <Reset />
-      </div>
+    <div className="score-sub-item ">
+      <Timer />
       <Language />
       <Correct />
       <Medal />

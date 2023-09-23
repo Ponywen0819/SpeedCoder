@@ -6,18 +6,14 @@ import { TypeProvider } from "./component/context";
 
 export const Component = () => {
   return (
-    <div className="max-width d-flex">
+    <div className="type-main">
       <TypeProvider>
-        <aside className="sz-aside sp-aside">
-          <Score />
-        </aside>
-        <main className="sz-main">
+        <Score />
+        <main className="flex-grow-1">
           <Penal />
           <Keyboard />
         </main>
-        <aside className="sz-aside sp-aside">
-          <Setting />
-        </aside>
+        <Setting />
       </TypeProvider>
     </div>
   );
