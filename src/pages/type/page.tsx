@@ -9,7 +9,7 @@ export const Component = () => {
     <div className="type-main">
       <TypeProvider>
         <Score />
-        <main className="flex-grow-1">
+        <main className="flex-grow-1 p-3">
           <Penal />
           <Keyboard />
         </main>
