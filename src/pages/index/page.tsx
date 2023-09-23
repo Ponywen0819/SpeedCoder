@@ -1,12 +1,13 @@
-import { Button } from "antd";
+import Button from "react-bootstrap/Button";
+import { LinkContainer } from "react-router-bootstrap";
 
 export function Component() {
   return (
-    <div className="max-width">
+    <>
       <h1 className="text-center mb-5 fs-2">
         Online Typing Practice for Programmers
       </h1>
-      <div className="d-flex">
+      <div className="d-flex justify-content-evenly">
         <img src={"/screenshot.png"} width={560} />
         <div className="ps-5 pe-5 d-flex flex-column">
           <p>Support languages</p>
@@ -20,14 +21,14 @@ export function Component() {
             <li>Python</li>
             <li>R</li>
           </ul>
-          <Button type="primary" href="/lesson">
-            Try it
-          </Button>
+          <LinkContainer to={"/lesson"}>
+            <Button>Try it</Button>
+          </LinkContainer>
         </div>
       </div>
       <h2 className="text-center mt-5 mb-5 fs-4">
         Don't Just be a Coder, be a SpeedCoder!
       </h2>
-    </div>
+    </>
   );
 }
