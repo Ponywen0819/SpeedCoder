@@ -1,1 +1,6 @@
-@import "bootstrap/scss/bootstrap";
+@import "bootstrap";
+
+@import "./stylesheets/base/color.scss";
+@import "./stylesheets/base/sizing.scss";
+
+@import "./stylesheets/component/footer.scss";

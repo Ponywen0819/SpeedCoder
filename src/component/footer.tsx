@@ -1,12 +1,14 @@
-import type { FC } from "react";
+import Container from "react-bootstrap/Container";
 
-export const Footer: FC = () => {
+export const Footer = () => {
   return (
-    <div className="bg-footer sz-footer shadow-t mt-auto text-footer">
-      {"Just incomplete copy of "}
-      <a className="link-footer" href="https://www.speedcoder.net/">
-        SpeedCoder
-      </a>
+    <div className="footer">
+      <Container className="text-center">
+        <span>{"Just incomplete copy of "}</span>
+        <a className="link-footer" href="https://www.speedcoder.net/">
+          SpeedCoder
+        </a>
+      </Container>
     </div>
   );
 };
