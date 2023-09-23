@@ -1,11 +1,14 @@
-import { QWER } from "./keyboard_layout";
-import { useType } from "./context";
-import "@/scss/component/keyboard.scss";
+import { useType } from "../../context";
+import { useEffect, useState } from "react";
+import type { LayoutList } from "./type";
 
 interface KeyProp {
   value: string | string[];
 }
 
+interface LineProp {
+  layout: LayoutList;
+}
 const Key = ({ value }: KeyProp) => {
   if (typeof value === "string") {
     return (
@@ -24,10 +27,10 @@ const Key = ({ value }: KeyProp) => {
   }
 };
 
-const FirstLine = () => {
+const FirstLine = ({ layout }: LineProp) => {
   return (
     <>
-      {QWER.slice(0, 13).map((value) => (
+      {layout.slice(0, 13).map((value) => (
         <Key value={value} />
       ))}
       <li className="text-key key-db">Backspace</li>
@@ -35,11 +38,11 @@ const FirstLine = () => {
   );
 };
 
-const SecondLine = () => {
+const SecondLine = ({ layout }: LineProp) => {
   return (
     <>
       <li className="text-key key-oh">Tab</li>
-      {QWER.slice(13, 25).map((value) => (
+      {layout.slice(13, 25).map((value) => (
         <Key value={value} />
       ))}
       <li className="key-oh">
@@ -50,11 +53,11 @@ const SecondLine = () => {
   );
 };
 
-const ThirdLine = () => {
+const ThirdLine = ({ layout }: LineProp) => {
   return (
     <>
       <li className="text-key key-otq">Caps Lock</li>
-      {QWER.slice(25, 36).map((value) => (
+      {layout.slice(25, 36).map((value) => (
         <Key value={value} />
       ))}
       <li className="text-key key-tq">Enter</li>
@@ -62,11 +65,11 @@ const ThirdLine = () => {
   );
 };
 
-const ForthLine = () => {
+const ForthLine = ({ layout }: LineProp) => {
   return (
     <>
       <li className="text-key key-tq">Shift</li>
-      {QWER.slice(36).map((value) => (
+      {layout.slice(36).map((value) => (
         <Key value={value} />
       ))}
       <li className="text-key key-ttq">Shift</li>
@@ -88,20 +91,32 @@ const FifthLine = () => {
     </>
   );
 };
-const Layout = () => {
-  return (
-    <ul className="d-flex flex-wrap sz-keyboard">
-      <FirstLine />
-      <SecondLine />
-      <ThirdLine />
-      <ForthLine />
-      <FifthLine />
-    </ul>
-  );
-};
 
-export const Keyboard = () => {
+import type { LayoutModule } from "./type";
+
+export const KeyboardLayout = () => {
   const type_context = useType();
+  const [type, setType] = useState<LayoutList | null>(null);
 
-  return <div>{type_context?.enable_keyboard && <Layout />}</div>;
+  useEffect(() => {
+    const name = type_context?.layout;
+    if (name === "qwerty") {
+      import("./qwerty").then((module: LayoutModule) => {
+        const layout = module.default;
+        setType(layout);
+      });
+    }
+  }, []);
+
+  return (
+    type && (
+      <ul className="d-flex flex-wrap sz-keyboard">
+        <FirstLine layout={type} />
+        <SecondLine layout={type} />
+        <ThirdLine layout={type} />
+        <ForthLine layout={type} />
+        <FifthLine />
+      </ul>
+    )
+  );
 };

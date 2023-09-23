@@ -1,0 +1,58 @@
+$finger-width: 15px;
+@mixin finger {
+  width: $finger-width;
+  display: inline-block;
+  border-radius: calc($finger-width/2) calc($finger-width/2) 0 0;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  margin-bottom: -10px;
+  background-color: white;
+  &:active {
+    background-color: rgba($color: #5cbdfd, $alpha: 1);
+  }
+}
+
+.hands-container {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  gap: 3rem;
+  margin-top: -50px;
+}
+
+.thumb {
+  @include finger;
+  margin-bottom: -20px;
+  height: 40px;
+}
+
+.forefinger {
+  @include finger;
+  height: 55px;
+}
+
+.middle_finger {
+  @include finger;
+
+  height: 65px;
+}
+
+.ring_finger {
+  @include finger;
+  height: 60px;
+}
+
+.little_finger {
+  @include finger;
+  height: 40px;
+}
+
+.dorsal {
+  width: calc($finger-width * 5);
+  height: 50px;
+  border-radius: 0 0 25px 25px;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}

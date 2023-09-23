@@ -1,4 +1,4 @@
-import { Keyboard } from "./component/keybord";
+import { Keyboard } from "./component/keyboard";
 import { Penal } from "./component/penal";
 import { Score } from "./component/score";
 import { Setting } from "./component/setting";
