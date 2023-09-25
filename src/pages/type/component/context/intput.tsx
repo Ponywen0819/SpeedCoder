@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect, useRef } from "react";
-import { ProviderProp } from "./type";
+import { ProviderProp, CharComponentSetting } from "./type";
+import { useLocation } from "react-router-dom";
+import useSWR from "swr";
 
 export type input_context = {
   index: number;
@@ -12,6 +14,34 @@ export type input_context = {
 
 const input_context = createContext<input_context | null>(null);
 
+const format_string = (data: string): CharComponentSetting[] => {
+  const res = [];
+
+  let include = true;
+  let index = 0;
+  let key = 0;
+  for (const char of data.split("")) {
+    if (char === " " && !include) {
+      res.push({
+        id: -1,
+        key,
+        char,
+      });
+    } else {
+      res.push({
+        id: index,
+        key,
+        char,
+      });
+      index++;
+      include = char !== "\n";
+    }
+    key++;
+  }
+
+  return res;
+};
+
 export const InputProvider = ({ children }: ProviderProp) => {
   const [index, setIndex] = useState(0);
   const [buffer, setBuffer] = useState("");
@@ -20,7 +50,6 @@ export const InputProvider = ({ children }: ProviderProp) => {
   const correct_num = useRef(0);
 
   useEffect(() => {
-    console.log(finish);
     if (!finish) {
       addEventListener("keydown", input_handler);
     }
@@ -29,10 +58,17 @@ export const InputProvider = ({ children }: ProviderProp) => {
     };
   }, [finish]);
 
+  useEffect(() => {
+    if (index === max) {
+      setFinish(true);
+    }
+  }, [index]);
+
   const input_handler = (event: KeyboardEvent) => {
     if (event.ctrlKey) {
       return;
     }
+
     event.preventDefault();
     const valid_reg = /^.$/;
     const current = event.key;
@@ -46,12 +82,6 @@ export const InputProvider = ({ children }: ProviderProp) => {
       deleteText();
     }
   };
-
-  useEffect(() => {
-    if (index === max) {
-      setFinish(true);
-    }
-  }, [index]);
 
   const init = (id: number) => {
     setMax(id);
