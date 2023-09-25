@@ -20,6 +20,6 @@ gdouble angle_in_360(gdouble angle)
   gdouble result = angle;
   while(result >= 360)
     result -= 360;
-
+  
   return result;
 }

@@ -95,11 +95,11 @@ const FifthLine = () => {
 import type { LayoutModule } from "./type";
 
 export const KeyboardLayout = () => {
-  const type_context = useType();
+  const { keyboard } = useType();
   const [type, setType] = useState<LayoutList | null>(null);
 
   useEffect(() => {
-    const name = type_context?.layout;
+    const name = keyboard?.layout_type;
     if (name === "qwerty") {
       import("./qwerty").then((module: LayoutModule) => {
         const layout = module.default;

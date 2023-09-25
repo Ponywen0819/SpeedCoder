@@ -1,14 +1,16 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import type { ChangeEvent } from "react";
+import { useType } from "../context";
 
 export const Language = () => {
+  const { reset } = useType();
   const navigate = useNavigate();
   const location = useLocation();
   const language = location.pathname.split("/")[2];
-  console.log(language);
 
   const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
+    reset();
     navigate(`/type/${value}`);
   };
 
