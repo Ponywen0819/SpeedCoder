@@ -65,10 +65,12 @@ export const Penal = () => {
   );
 
   const {
-    input: { init },
+    input: { init, reg },
   } = useType();
 
   if (!data) return;
+
+  reg(data);
 
   const { index, components } = generateText(data);
   init(index);

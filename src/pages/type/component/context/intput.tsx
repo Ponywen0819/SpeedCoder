@@ -15,6 +15,7 @@ const input_context = createContext<input_context | null>(null);
 export const InputProvider = ({ children }: ProviderProp) => {
   const [index, setIndex] = useState(0);
   const [buffer, setBuffer] = useState("");
+  const [example, setExample] = useState("");
   const [finish, setFinish] = useState(false);
   const [max, setMax] = useState<number | null>(null);
   const correct_num = useRef(0);
@@ -71,18 +72,23 @@ export const InputProvider = ({ children }: ProviderProp) => {
     correct_num.current = 0;
   };
 
+  const reg = (string: string) => {
+    setExample(string.replace(/ /g, ""));
+  };
+
+  const value = {
+    index,
+    buffer,
+    finish,
+    correct: correct_num.current,
+    max,
+    reg,
+    example,
+    reset,
+    init,
+  };
   return (
-    <input_context.Provider
-      value={{
-        index,
-        buffer,
-        finish,
-        correct: correct_num.current,
-        reset,
-        init,
-      }}>
-      {children}
-    </input_context.Provider>
+    <input_context.Provider value={value}>{children}</input_context.Provider>
   );
 };
 
