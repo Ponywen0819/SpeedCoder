@@ -32,9 +32,10 @@
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   @media (max-width: 1200px) {
     flex-direction: row;
+    justify-content: center;
   }
 }
 

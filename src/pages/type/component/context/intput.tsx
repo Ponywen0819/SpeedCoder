@@ -73,7 +73,7 @@ export const InputProvider = ({ children }: ProviderProp) => {
   };
 
   const reg = (string: string) => {
-    setExample(string.replace(/ /g, ""));
+    setExample(string.replace(/\n( )*/g, "\n"));
   };
 
   const value = {

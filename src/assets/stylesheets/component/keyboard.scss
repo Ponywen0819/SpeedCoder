@@ -19,13 +19,16 @@ $key-sz: 48px;
   background-color: rgba($color: #fafafa, $alpha: 1);
   border-top: 2px solid #e0e0e0;
   border-left: 2px solid #e0e0e0;
+}
 
-  &:active {
-    border: 2px solid #aaaaaa;
-  }
-  &:focus {
-    border: 2px solid #555555;
-  }
+.key-active {
+  border: 2px solid #555555 !important;
+}
+
+.key-focus {
+  // border: 2px solid #555555;
+  background-color: #555555;
+  color: white;
 }
 
 .text-key {

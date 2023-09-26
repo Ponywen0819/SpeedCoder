@@ -1,7 +1,7 @@
-import { Keyboard } from "./component/keyboard";
+import { Input } from "./component/keyboard";
 import { Penal } from "./component/penal";
 import { Score } from "./component/score";
-import { Setting } from "./component/setting";
+// import { Setting } from "./component/setting";
 import { Providers } from "./component/context";
 import { Modal } from "./component/modal";
 
@@ -12,7 +12,7 @@ export const Component = () => {
         <Score />
         <main className="flex-grow-1 p-3">
           <Penal />
-          <Keyboard />
+          <Input />
         </main>
         {/* <Setting /> */}
         <Modal />

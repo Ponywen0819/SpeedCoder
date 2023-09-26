@@ -6,11 +6,15 @@ import { useKeyboard, KeyboardProvider } from "./keyboard";
 import type { keyboard_context } from "./keyboard";
 import { useTimer, TimerProvider } from "./timer";
 import type { timer_context } from "./timer";
+import { useDocument, DocumentProvider } from "./doc";
+import type { doc_context } from "./doc";
 
 type TypeContext = {
   keyboard: keyboard_context;
   input: input_context;
   timer: timer_context;
+  doc: doc_context;
+  active_group: { [key: string]: boolean };
   reset: () => void;
 };
 
@@ -20,6 +24,7 @@ export const TypeProvider = ({ children }: ProviderProp) => {
   const input = useInput();
   const keyboard = useKeyboard();
   const timer = useTimer();
+  const doc = useDocument();
 
   useEffect(() => {
     if (!timer.counting && input.buffer !== "") {
@@ -38,9 +43,13 @@ export const TypeProvider = ({ children }: ProviderProp) => {
     timer?.reset();
   };
 
+  const active_group = keyboard.calc_group(doc.doc[input.index]);
+
   return (
     <type_context.Provider
       value={{
+        doc,
+        active_group,
         keyboard,
         input,
         timer,
@@ -54,11 +63,13 @@ export const TypeProvider = ({ children }: ProviderProp) => {
 export const Providers = ({ children }: ProviderProp) => {
   return (
     <InputProvider>
-      <KeyboardProvider>
-        <TimerProvider>
-          <TypeProvider>{children}</TypeProvider>
-        </TimerProvider>
-      </KeyboardProvider>
+      <DocumentProvider>
+        <KeyboardProvider>
+          <TimerProvider>
+            <TypeProvider>{children}</TypeProvider>
+          </TimerProvider>
+        </KeyboardProvider>
+      </DocumentProvider>
     </InputProvider>
   );
 };
