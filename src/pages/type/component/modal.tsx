@@ -4,15 +4,16 @@ import BootstrapModal from "react-bootstrap/Modal";
 
 const get_correct = (): number => {
   const {
-    input: { buffer, example, finish },
+    input: { buffer, finish },
+    doc: { doc },
     timer: { sec },
-    reset,
   } = useType();
 
   if (!finish) return 0;
   let res = 0;
+  const processed = doc.replace(/\n( )*/g, "\n");
   buffer.split("").map((val, index) => {
-    if (val === example[index]) res++;
+    if (val === processed[index]) res++;
   });
   return res;
 };
@@ -21,15 +22,14 @@ const get_pr = (number: number) => {
   const {
     input: { max },
     timer: { sec },
-    reset,
   } = useType();
 
-  return Math.round((1 - (max - number) / max) * 100);
+  return Math.round((1 - (max! - number) / max!) * 100);
 };
 
 export const Modal = () => {
   const {
-    input: { finish, max, example },
+    input: { finish },
     timer: { sec },
     reset,
   } = useType();

@@ -1,4 +1,5 @@
 import { ArrowReturnLeft } from "react-bootstrap-icons";
+import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { useType } from "./context";
 
@@ -33,7 +34,7 @@ const Text = ({ val, id }: { val: string; id: number }) => {
 
 const generateText = (
   data: string
-): { index: number; components: ReactNode[] } => {
+): { max: number; components: ReactNode[] } => {
   let index = 0;
   let include = true;
 
@@ -48,19 +49,27 @@ const generateText = (
     }
   }
 
-  return { index, components };
+  return { max: index, components };
 };
 
 export const Penal = () => {
   const {
-    input: { init, finish },
+    input: { init, finish, index },
     doc: { doc },
   } = useType();
 
+  useEffect(() => {
+    document.getElementById(`${index}`)?.scrollIntoView({
+      behavior: "auto",
+      block: "center",
+    });
+    console.log(document.getElementById(`${index}`));
+  }, [finish, index]);
+
   if (!doc) return;
 
-  const { index, components } = generateText(doc);
-  init(index);
+  const { max, components } = generateText(doc);
+  init(max);
   return (
     <div className={`penal-container ${finish ? "penal-disable " : ""}`}>
       {components}

@@ -36,7 +36,7 @@ const width2class = (width: number): string => {
 };
 
 const valInKeys = (val: string, keys: string[], group: number): boolean => {
-  console.log();
+  if (!val) false;
   if (val == " " && keys[0] == "") return true;
   if (
     /[!@#$%^&*()__+QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>?]/.test(val) &&
@@ -44,6 +44,8 @@ const valInKeys = (val: string, keys: string[], group: number): boolean => {
     group === 1
   )
     return true;
+
+  if (val == "\n" && keys[0] === "Enter") return true;
   return keys.indexOf(val.toUpperCase()) >= 0;
 };
 

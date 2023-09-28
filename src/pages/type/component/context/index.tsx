@@ -44,7 +44,7 @@ export const TypeProvider = ({ children }: ProviderProp) => {
     timer?.reset();
   };
 
-  const current = doc.doc[input.index];
+  const current = doc.doc.replace(/\n( )*/g, "\n")[input.index] || "";
   const active_group = keyboard.calc_group(current);
 
   return (

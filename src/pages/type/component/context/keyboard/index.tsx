@@ -80,7 +80,7 @@ export const KeyboardProvider = ({ children }: ProviderProp) => {
       5: /[6yhn7ujm^YHN&UJM]/.test(string),
       6: /[8ik,*IK<]/.test(string),
       7: /[9ol.(OL>)]/.test(string),
-      8: /[\0\p\;\/\[\'\=\]\)\P\:\?\_\{\"\+\}\n-]/.test(string),
+      8: /[0\p\;\/\[\'\=\]\)\P\:\?\_\{\"\+\}\n-]/.test(string),
       9: / /.test(string),
     };
   };

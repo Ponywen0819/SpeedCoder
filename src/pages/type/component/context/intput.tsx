@@ -6,6 +6,7 @@ export type input_context = {
   buffer: string;
   finish: boolean;
   correct: number;
+  max: number | null;
   reset: () => void;
   init: (id: number) => void;
 };
@@ -21,7 +22,6 @@ export const InputProvider = ({ children }: ProviderProp) => {
   const correct_num = useRef(0);
 
   useEffect(() => {
-    console.log(finish);
     if (!finish) {
       addEventListener("keydown", input_handler);
     }
