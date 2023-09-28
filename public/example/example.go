@@ -1,33 +1,45 @@
 package main
 
 import (
-  "fmt"
-  "sync"
+	"bufio"
+	"fmt"
+	"os"
+	"regexp"
+	"strings"
 )
 
-type BankAccount struct {
-  balance int
-  musync.Mutex
+func countWords(text string) map[string]int {
+	wordCount := make(map[string]int)
+	wordRegex := regexp.MustCompile(`\b\w+\b`)
+
+	words := wordRegex.FindAllString(text, -1)
+	for _, word := range words {
+		wordCount[word]++
+	}
+
+	return wordCount
 }
 
-func (a *BankAccount) Deposit(amount int) {
-  a.mu.Lock()
-  defer a.mu.Unlock()
-  a.balance += amount
-}
+func main() {
+	fmt.Println("Enter text (Ctrl+D to end input):")
 
-func (a *BankAccount) Withdraw(amount int) {
-  a.mu.Lock()
-  defer a.mu.Unlock()
-  if a.balance >= amount {
-    a.balance -= amount
-  } else {
-    fmt.Println("余额不足")
-  }
-}
+	scanner := bufio.NewScanner(os.Stdin)
+	var inputText strings.Builder
 
-func (a *BankAccount) Balance() int {
-  a.mu.Lock()
-  defer a.mu.Unlock()
-  return a.balance
+	for scanner.Scan() {
+		inputText.WriteString(scanner.Text())
+		inputText.WriteByte('\n')
+	}
+
+	if scanner.Err() != nil {
+		fmt.Println("Error reading input:", scanner.Err())
+		return
+	}
+
+	wordFrequency := countWords(inputText.String())
+
+	fmt.Println("\nWord frequency:")
+	for word, count := range wordFrequency {
+		fmt.Printf("%s: %d\n", word, count)
+	}
 }

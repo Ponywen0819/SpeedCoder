@@ -1,32 +1,36 @@
-set.seed(123)
-
-days <- 100
-stock_prices <- cumsum(runif(days, min = -1, max = 1)) + 100
-
-buy_signal <- rep(FALSE, days)
-sell_signal <- rep(FALSE, days)
-
-for (i in 4:days) {
-  if (stock_prices[i - 2] < stock_prices[i - 1] && stock_prices[i - 1] < stock_prices[i]) {
-    buy_signal[i] <- TRUE
-  }
-  if (stock_prices[i - 2] > stock_prices[i - 1] && stock_prices[i - 1] > stock_prices[i]) {
-    sell_signal[i] <- TRUE
-  }
+square <- function(x) {
+  return(x^2)
 }
 
-initial_balance <- 10000
-balance <- initial_balance
-shares <- 0
+numbers <- 1:5
+squared_numbers <- sapply(numbers, square)
+cat("Squared Numbers: ", squared_numbers, "\n")
 
-for (i in 1:days) {
-  if (buy_signal[i]) {
-    shares_to_buy <- floor(balance / stock_prices[i])
-    shares <- shares + shares_to_buy
-    balance <- balance - shares_to_buy * stock_prices[i]
-  }
-  if (sell_signal[i]) {
-    balance <- balance + shares * stock_prices[i]
-    shares <- 0
-  }
+colors <- c("red", "green", "blue")
+cat("Colors: ", paste(colors, collapse = ", "), "\n")
+
+data <- data.frame(
+  Name = c("John", "Jane", "Bob"),
+  Age = c(25, 30, 35),
+  City = c("New York", "San Francisco", "Chicago")
+)
+
+cat("Data Frame:\n")
+print(data)
+
+mean_age <- mean(data$Age)
+cat("Mean Age: ", mean_age, "\n")
+
+new_person <- data.frame(Name = "Alice", Age = 28, City = "Los Angeles")
+data <- rbind(data, new_person)
+
+cat("Updated Data Frame:\n")
+print(data)
+
+filter_older_than <- function(df, age_threshold) {
+  return(df[df$Age > age_threshold, , drop = FALSE])
 }
+
+filtered_data <- filter_older_than(data, 30)
+cat("Filtered Data Frame (older than 30):\n")
+print(filtered_data)

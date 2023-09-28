@@ -1,25 +1,43 @@
-void add_image_actors()
-{
-  int x = 20;
-  int y = 0;
-  gdouble angle = 0;
-  GSList *list = list_items;
-  while (list)
-  {
-    Item *item = (Item*)list->data;
-    ClutterActor *actor = item->actor;
+#include <stdlib.h>
 
-    clutter_actor_show (actor);
+struct Node {
+    int data;
+    struct Node* next;
+};
 
-    list = g_slist_next (list);
-  }
+void appendNode(struct Node** headRef, int newData) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    struct Node* last = *headRef;
+    newNode->data = newData;
+    newNode->next = NULL;
+
+    if (*headRef == NULL) {
+        *headRef = newNode;
+        return;
+    }
+
+    while (last->next != NULL) {
+        last = last->next;
+    }
+
+    last->next = newNode;
 }
 
-gdouble angle_in_360(gdouble angle)
-{
-  gdouble result = angle;
-  while(result >= 360)
-    result -= 360;
-  
-  return result;
+void displayList(struct Node* node) {
+    while (node != NULL) {
+        node = node->next;
+    }
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    appendNode(&head, 12);
+    appendNode(&head, 34);
+    appendNode(&head, 56);
+    appendNode(&head, 78);
+
+    displayList(head);
+
+    return 0;
 }
