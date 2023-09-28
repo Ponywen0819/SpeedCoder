@@ -15,6 +15,10 @@
   resize: none;
 }
 
+.penal-disable {
+  opacity: 0.5;
+}
+
 .sz-one-word {
   display: inline;
   font-size: 15px;
@@ -35,5 +39,6 @@
 }
 
 .wrong {
-  color: rgba($color: #ff1515, $alpha: 1);
+  color: white;
+  background-color: rgba($color: #ff1515, $alpha: 1);
 }

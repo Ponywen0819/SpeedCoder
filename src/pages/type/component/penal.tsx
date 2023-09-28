@@ -1,13 +1,6 @@
 import { ArrowReturnLeft } from "react-bootstrap-icons";
 import type { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
 import { useType } from "./context";
-import useSWR from "swr";
-
-const fetcher = (url: string) =>
-  fetch(url)
-    .then((res) => res.text())
-    .then((text) => text.replace(/\r\n/g, "\n"));
 
 const Text = ({ val, id }: { val: string; id: number }) => {
   const {
@@ -16,7 +9,8 @@ const Text = ({ val, id }: { val: string; id: number }) => {
 
   const is_new_line = val == "\n";
   const is_current = id == index;
-  const is_wrong = buffer.length - 1 < id ? false : buffer[id] != val;
+  const is_wrong =
+    id < 0 ? false : buffer.length - 1 < id ? false : buffer[id] != val;
   const is_correct = buffer.length - 1 < id ? false : buffer[id] == val;
 
   return (
@@ -58,21 +52,18 @@ const generateText = (
 };
 
 export const Penal = () => {
-  const { pathname } = useLocation();
-  const { data } = useSWR(
-    `/example/example.${pathname.split("/")[2]}`,
-    fetcher
-  );
-
   const {
-    input: { init, reg },
+    input: { init, finish },
+    doc: { doc },
   } = useType();
 
-  if (!data) return;
+  if (!doc) return;
 
-  reg(data);
-
-  const { index, components } = generateText(data);
+  const { index, components } = generateText(doc);
   init(index);
-  return <div className="penal-container">{components}</div>;
+  return (
+    <div className={`penal-container ${finish ? "penal-disable " : ""}`}>
+      {components}
+    </div>
+  );
 };
