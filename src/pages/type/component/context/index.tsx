@@ -15,6 +15,7 @@ type TypeContext = {
   timer: timer_context;
   doc: doc_context;
   active_group: { [key: string]: boolean };
+  current: string;
   reset: () => void;
 };
 
@@ -43,13 +44,15 @@ export const TypeProvider = ({ children }: ProviderProp) => {
     timer?.reset();
   };
 
-  const active_group = keyboard.calc_group(doc.doc[input.index]);
+  const current = doc.doc[input.index];
+  const active_group = keyboard.calc_group(current);
 
   return (
     <type_context.Provider
       value={{
         doc,
         active_group,
+        current,
         keyboard,
         input,
         timer,

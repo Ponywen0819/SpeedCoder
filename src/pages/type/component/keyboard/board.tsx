@@ -35,13 +35,25 @@ const width2class = (width: number): string => {
   return "";
 };
 
+const valInKeys = (val: string, keys: string[], group: number): boolean => {
+  console.log();
+  if (val == " " && keys[0] == "") return true;
+  if (
+    /[!@#$%^&*()__+QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>?]/.test(val) &&
+    keys[0] == "Shift" &&
+    group === 1
+  )
+    return true;
+  return keys.indexOf(val.toUpperCase()) >= 0;
+};
+
 const Key = ({ keys, group, width }: keyboard_key_setting) => {
-  const { active_group } = useType();
+  const { active_group, current } = useType();
   return (
     <li
       className={`text-key ${width2class(width)} ${
         active_group[group] ? "key-active" : ""
-      }`}>
+      } ${valInKeys(current, keys, group) ? "key-focus" : ""}`}>
       {keys.map((v) => (
         <p className="text-key" key={v}>
           {v}
