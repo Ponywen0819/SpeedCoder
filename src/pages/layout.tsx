@@ -7,9 +7,11 @@ export const MainLayout = () => {
   return (
     <div className="min-height d-flex flex-column">
       <Header />
-      <Container className="flex-grow-1 pt-2 pb-2">
+
+      <div className="flex-grow-1 pt-2 pb-2 m-auto">
         <Outlet />
-      </Container>
+      </div>
+
       <Footer />
     </div>
   );

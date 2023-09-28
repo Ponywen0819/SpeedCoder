@@ -7,16 +7,16 @@ import { Modal } from "./component/modal";
 
 export const Component = () => {
   return (
-    <div className="type-main">
-      <Providers>
+    <Providers>
+      <div className="type-main w-fit m-auto">
         <Score />
-        <main className="flex-grow-1 p-3">
+        <main className="p-3 ">
           <Penal />
           <Input />
         </main>
         {/* <Setting /> */}
         <Modal />
-      </Providers>
-    </div>
+      </div>
+    </Providers>
   );
 };

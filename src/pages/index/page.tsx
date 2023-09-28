@@ -7,7 +7,7 @@ export function Component() {
       <h1 className="text-center mb-5 fs-2">
         Online Typing Practice for Programmers
       </h1>
-      <div className="d-flex justify-content-evenly">
+      <div className="d-flex justify-content-center">
         <img src={"/screenshot.png"} width={560} />
         <div className="ps-5 pe-5 d-flex flex-column">
           <p>Support languages</p>
