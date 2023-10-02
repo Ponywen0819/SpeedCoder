@@ -1,9 +1,0 @@
-animateToOverview: function(animationType) {
-    for (let w = 0; w < this._workspaces.length; w++) {
-        if (animationType == AnimationType.ZOOM)
-            this._workspaces[w].zoomToOverview();
-        else
-            this._workspaces[w].fadeToOverview();
-    }
-    this._updateWorkspaceActors(false);
-},

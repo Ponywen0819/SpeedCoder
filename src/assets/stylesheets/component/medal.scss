@@ -1,0 +1,37 @@
+@mixin medal-base {
+  border-radius: 10%;
+  width: 64px;
+  height: 64px;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.complete-medal {
+  @include medal-base;
+  border-color: black;
+  color: #000;
+}
+
+.brown-medal {
+  @include medal-base;
+  border-color: rgb(141, 101, 28);
+  color: rgb(141, 101, 28);
+}
+
+.sliver-medal {
+  @include medal-base;
+  border-color: rgb(221, 215, 205);
+  color: rgb(221, 215, 205);
+}
+
+.gold-medal {
+  @include medal-base;
+  border-color: rgb(255, 170, 24);
+  color: rgb(255, 170, 24);
+}
