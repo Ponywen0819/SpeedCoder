@@ -39,11 +39,12 @@ const valInKeys = (val: string, keys: string[], group: number): boolean => {
   if (!val) false;
   if (val == " " && keys[0] == "") return true;
   if (
-    /[!@#$%^&*()__+QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>?]/.test(val) &&
+    /[@#$%^&*()__+WERTYUIOP{}SDFGHJKL:"XCVBNM<>?]/.test(val) &&
     keys[0] == "Shift" &&
     group === 1
   )
     return true;
+  if (/[~!QAZ]/.test(val) && keys[0] == "Shift" && group === 8) return true;
 
   if (val == "\n" && keys[0] === "Enter") return true;
   return keys.indexOf(val.toUpperCase()) >= 0;
