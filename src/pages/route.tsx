@@ -3,7 +3,7 @@ import { MainLayout } from "./layout";
 import { ErrorPage } from "./error";
 import { IndexRoute } from "./index/route";
 import { LessonRoute } from "./lessons/route";
-import { TypeRoute } from "./type/route";
+import { TypeRoute } from "./typing/route";
 
 export const MainRoute = (
   <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>

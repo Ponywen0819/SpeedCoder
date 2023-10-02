@@ -1,4 +1,4 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError, isRouteErrorResponse } from "react-router-dom";
 import { WarningOutlined } from "@ant-design/icons";
 import { Footer } from "@/component/footer";
 import { Header } from "@/component/header";
@@ -6,6 +6,7 @@ import { Header } from "@/component/header";
 export const ErrorPage = () => {
   const error = useRouteError();
 
+  if (!isRouteErrorResponse(error)) return "";
   return (
     <div className="min-height d-flex flex-column">
       <Header />
