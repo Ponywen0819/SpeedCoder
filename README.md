@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# SpeedCoder Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 開發環境
 
-Currently, two official plugins are available:
+- Node.js - v18.18.0
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 專案結構
 
-## Expanding the ESLint configuration
+```
+/
+|- src : 專案頁面主要程式
+   |- assets : scss 存放地點
+   |- component : 頁面共享部件
+   |- pages : 頁面主要程式
+|- public : 所有靜態檔案
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 注意事項
+
+### 啟動專案開發模式
+
+```bash
+npm install
+npm run dev
+```
+
+專案會在 `http://localhost:3000` 開啟
