@@ -36,7 +36,7 @@ export const Display = () => {
 export const Medal = () => {
   return (
     <div className="info-container ">
-      <p className="label">獲得獎牌</p>
+      <p className="label">歷史最佳獎牌</p>
       <div className="m-auto pt-2 pb-2 w-fit">
         <Display />
       </div>

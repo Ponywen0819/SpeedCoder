@@ -4,7 +4,7 @@ export const Correct = () => {
   const { best } = useRecord();
   return (
     <div className="info-container ">
-      <p className="label">正確字數</p>
+      <p className="label">歷史最佳正確字數</p>
       {best ? (
         <p className="correct-text">{best}</p>
       ) : (
